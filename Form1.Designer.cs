@@ -46,6 +46,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.outputBox = new System.Windows.Forms.ListBox();
+            this.jsonWriteButton = new System.Windows.Forms.Button();
+            this.jsonLoadButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.repeatTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,21 +85,21 @@
             // 
             // appendButton
             // 
-            this.appendButton.Location = new System.Drawing.Point(608, 33);
+            this.appendButton.Location = new System.Drawing.Point(469, 12);
             this.appendButton.Name = "appendButton";
-            this.appendButton.Size = new System.Drawing.Size(75, 23);
+            this.appendButton.Size = new System.Drawing.Size(75, 70);
             this.appendButton.TabIndex = 4;
-            this.appendButton.Text = "Append";
+            this.appendButton.Text = "Append to .txt";
             this.appendButton.UseVisualStyleBackColor = true;
             this.appendButton.Click += new System.EventHandler(this.appendButton_Click);
             // 
             // loadButton
             // 
-            this.loadButton.Location = new System.Drawing.Point(34, 285);
+            this.loadButton.Location = new System.Drawing.Point(19, 268);
             this.loadButton.Name = "loadButton";
-            this.loadButton.Size = new System.Drawing.Size(75, 23);
+            this.loadButton.Size = new System.Drawing.Size(75, 56);
             this.loadButton.TabIndex = 5;
-            this.loadButton.Text = "Load";
+            this.loadButton.Text = "Load from .txt";
             this.loadButton.UseVisualStyleBackColor = true;
             this.loadButton.Click += new System.EventHandler(this.loadButton_Click);
             // 
@@ -209,12 +211,34 @@
             this.outputBox.Size = new System.Drawing.Size(729, 228);
             this.outputBox.TabIndex = 19;
             // 
+            // jsonWriteButton
+            // 
+            this.jsonWriteButton.Location = new System.Drawing.Point(550, 12);
+            this.jsonWriteButton.Name = "jsonWriteButton";
+            this.jsonWriteButton.Size = new System.Drawing.Size(75, 70);
+            this.jsonWriteButton.TabIndex = 20;
+            this.jsonWriteButton.Text = "Append to .json";
+            this.jsonWriteButton.UseVisualStyleBackColor = true;
+            this.jsonWriteButton.Click += new System.EventHandler(this.jsonWriteButton_Click);
+            // 
+            // jsonLoadButton
+            // 
+            this.jsonLoadButton.Location = new System.Drawing.Point(101, 268);
+            this.jsonLoadButton.Name = "jsonLoadButton";
+            this.jsonLoadButton.Size = new System.Drawing.Size(75, 56);
+            this.jsonLoadButton.TabIndex = 21;
+            this.jsonLoadButton.Text = "Load from .json";
+            this.jsonLoadButton.UseVisualStyleBackColor = true;
+            this.jsonLoadButton.Click += new System.EventHandler(this.jsonLoadButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(760, 571);
+            this.Controls.Add(this.jsonLoadButton);
+            this.Controls.Add(this.jsonWriteButton);
             this.Controls.Add(this.outputBox);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
@@ -261,6 +285,8 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ListBox outputBox;
+        private System.Windows.Forms.Button jsonWriteButton;
+        private System.Windows.Forms.Button jsonLoadButton;
     }
 }
 

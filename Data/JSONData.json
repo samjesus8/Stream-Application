@@ -1,0 +1,10 @@
+﻿{
+  "categoryName": "Give a name for your category",
+  "members": [
+    {
+      "memberProperty1": "This is a property thats in a member of this category \r\n This can contain any data type that is usable in C#",
+      "memberProperty2": 100,
+      "memberProperty3": true
+    }
+  ]
+}

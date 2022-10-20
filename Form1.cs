@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StreamLab.Builders;
+using System;
 using System.IO;
 using System.Windows.Forms;
 
@@ -60,6 +61,22 @@ namespace StreamLab
 
                 reader.Close();
             }
+        }
+
+        private void jsonWriteButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void jsonLoadButton_Click(object sender, EventArgs e)
+        {
+            var JSONBuilder = new JSONTextBuilder(); //Initialising an instance of the class
+
+            outputBox.Items.Add("Property 1: " + JSONBuilder.MemberProperty1);
+            outputBox.Items.Add("Property 2: " + JSONBuilder.MemberProperty2);
+            outputBox.Items.Add("Property 3: "+ JSONBuilder.MemberProperty3);
+
+            //IMPORTANT - Before running this program make sure to copy and paste your JSON file into the '\bin\Debug' folder of your project
         }
     }
 }
