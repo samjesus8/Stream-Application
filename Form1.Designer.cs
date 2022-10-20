@@ -234,7 +234,7 @@
             this.Controls.Add(this.quoteBox);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Stream Application";
             ((System.ComponentModel.ISupportInitialize)(this.repeatTrackBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
