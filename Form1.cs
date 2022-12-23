@@ -7,6 +7,7 @@ namespace StreamLab
 {
     public partial class Form1 : Form
     {
+        public JSONTextBuilder JSONBuilder = new JSONTextBuilder(); //Initialising an instance of the class
         public Form1()
         {
             InitializeComponent();
@@ -16,7 +17,7 @@ namespace StreamLab
         {
             try //Try Catch for error checking in case the program fails
             {
-                using (StreamWriter writer = new StreamWriter("D:/UNI STUFF/C# Projects/Year 2/StreamLab/Data/data.txt", true, System.Text.Encoding.UTF8)) //Opening the text file 
+                using (StreamWriter writer = new StreamWriter(System.AppDomain.CurrentDomain.BaseDirectory + "/Data/data.txt", true, System.Text.Encoding.UTF8)) //Opening the text file 
                 {
                     string data = quoteBox.Text.ToString(); //Assigning the user input into a variable
 
@@ -32,7 +33,7 @@ namespace StreamLab
 
         private void loadButton_Click(object sender, EventArgs e)
         {
-            using (StreamReader reader = new StreamReader("D:/UNI STUFF/C# Projects/Year 2/StreamLab/Data/data.txt")) //Opening a StreamReader to read the file
+            using (StreamReader reader = new StreamReader(System.AppDomain.CurrentDomain.BaseDirectory + "/Data/data.txt")) //Opening a StreamReader to read the file
             {
                 do
                 {
@@ -54,7 +55,7 @@ namespace StreamLab
 
                         for (int i = 0; i <= int.Parse(value); i++)
                         {
-                            outputBox.Items.Add(quote); //For loop to output the quote based on the repeat value
+                            outputBox.Text = quote;
                         }
                     }
                 } while (reader.EndOfStream == false);
@@ -65,16 +66,21 @@ namespace StreamLab
 
         private void jsonWriteButton_Click(object sender, EventArgs e)
         {
-
+            JSONBuilder.Write(member1Box.Text, member2Box.Text, member3Box.Text);
         }
 
         private void jsonLoadButton_Click(object sender, EventArgs e)
         {
-            var JSONBuilder = new JSONTextBuilder(); //Initialising an instance of the class
+            JSONBuilder.Load();
 
-            outputBox.Items.Add("Property 1: " + JSONBuilder.MemberProperty1);
-            outputBox.Items.Add("Property 2: " + JSONBuilder.MemberProperty2);
-            outputBox.Items.Add("Property 3: "+ JSONBuilder.MemberProperty3);
+            foreach (var item in JSONBuilder.MemberProperties) 
+            {
+                string output = item.Value.MemberProperty1 + "\r\n" +
+                                item.Value.MemberProperty2 + "\r\n" +
+                                item.Value.MemberProperty3;
+
+                outputBox.Text = output;
+            }
 
             //IMPORTANT - Before running this program make sure to copy and paste your JSON file into the '\bin\Debug' folder of your project
         }
