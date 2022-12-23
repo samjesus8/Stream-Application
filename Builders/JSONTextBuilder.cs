@@ -11,6 +11,7 @@ namespace StreamLab.Builders
         public string MemberProperty2 { get; set; } //This MUST be the same as what you are using in the JSON file
         public string MemberProperty3 { get; set; } //Each member of a category MUST have the name property name
 
+
         public Dictionary<int, JSONTextBuilder> MemberProperties = new Dictionary<int, JSONTextBuilder>();
 
         public JSONTextBuilder() 
@@ -20,7 +21,10 @@ namespace StreamLab.Builders
 
         public void Write(string member1, string member2, string member3) 
         {
-            var path = System.AppDomain.CurrentDomain.BaseDirectory + "/Data/JSONData.json";
+            string pathDocuments = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
+            string dosesLocation = Path.Combine(pathDocuments, "User Files");
+
+            var path = dosesLocation + "/JSONData.json";
             var json = File.ReadAllText(path);
 
             var jsonObj = JObject.Parse(json);
@@ -42,7 +46,10 @@ namespace StreamLab.Builders
 
         public void Load() 
         {
-            using (StreamReader sr = new StreamReader(System.AppDomain.CurrentDomain.BaseDirectory + "/Data/JSONData.json")) //Open a Streamreader to your JSON file
+            string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
+            string dosesLocation = Path.Combine(path, "User Files");
+
+            using (StreamReader sr = new StreamReader(dosesLocation + "/JSONData.json")) //Open a Streamreader to your JSON file
             {
                 int count = 0;
                 var jsonData = sr.ReadToEnd(); //Read the whole JSON File to the last line

@@ -15,9 +15,12 @@ namespace StreamLab
 
         private void appendButton_Click(object sender, EventArgs e)
         {
+            string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
+            string dosesLocation = Path.Combine(path, "User Files");
+
             try //Try Catch for error checking in case the program fails
             {
-                using (StreamWriter writer = new StreamWriter(System.AppDomain.CurrentDomain.BaseDirectory + "/Data/data.txt", true, System.Text.Encoding.UTF8)) //Opening the text file 
+                using (StreamWriter writer = new StreamWriter(dosesLocation + "/data.txt", true, System.Text.Encoding.UTF8)) //Opening the text file 
                 {
                     string data = quoteBox.Text.ToString(); //Assigning the user input into a variable
 
@@ -33,7 +36,10 @@ namespace StreamLab
 
         private void loadButton_Click(object sender, EventArgs e)
         {
-            using (StreamReader reader = new StreamReader(System.AppDomain.CurrentDomain.BaseDirectory + "/Data/data.txt")) //Opening a StreamReader to read the file
+            string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
+            string dosesLocation = Path.Combine(path, "User Files");
+
+            using (StreamReader reader = new StreamReader(dosesLocation + "/data.txt")) //Opening a StreamReader to read the file
             {
                 do
                 {
@@ -71,18 +77,50 @@ namespace StreamLab
 
         private void jsonLoadButton_Click(object sender, EventArgs e)
         {
+            JSONBuilder.MemberProperties.Clear();
             JSONBuilder.Load();
 
-            foreach (var item in JSONBuilder.MemberProperties) 
-            {
-                string output = item.Value.MemberProperty1 + "\r\n" +
-                                item.Value.MemberProperty2 + "\r\n" +
-                                item.Value.MemberProperty3;
+            string[] outputArray = new string[JSONBuilder.MemberProperties.Count];
 
-                outputBox.Text = output;
+            for (int i = 0; i < JSONBuilder.MemberProperties.Count; i++) 
+            {
+                var dictionarySearch = JSONBuilder.MemberProperties.TryGetValue(i, out var item);
+
+                string output = item.MemberProperty1 + "\r\n" +
+                                item.MemberProperty2 + "\r\n" +
+                                item.MemberProperty3;
+
+                outputArray[i] = output;
             }
 
+            outputBox.Text = string.Join("\r\n\r\n", outputArray);
+
             //IMPORTANT - Before running this program make sure to copy and paste your JSON file into the '\bin\Debug' folder of your project
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
+            string dosesLocation = Path.Combine(path, "User Files");
+
+            if (!Directory.Exists(dosesLocation))
+            {
+                LoadFiles();
+            }
+        }
+
+        private string LoadFiles()
+        {
+            string myDocsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
+            string dosesLocation = Path.Combine(myDocsPath, "User Files");
+            if (!Directory.Exists(dosesLocation))
+            {
+                Directory.CreateDirectory(dosesLocation);
+            }
+
+            File.Copy(System.AppDomain.CurrentDomain.BaseDirectory + "/Data/JSONData.json", dosesLocation + "/JSONData.json", false);
+            File.Copy(System.AppDomain.CurrentDomain.BaseDirectory + "/Data/data.txt", dosesLocation + "/data.txt", false);
+            return dosesLocation;
         }
     }
 }

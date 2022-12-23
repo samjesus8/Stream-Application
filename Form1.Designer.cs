@@ -70,7 +70,7 @@
             // quoteBox
             // 
             this.quoteBox.Location = new System.Drawing.Point(46, 29);
-            this.quoteBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.quoteBox.Margin = new System.Windows.Forms.Padding(2);
             this.quoteBox.Name = "quoteBox";
             this.quoteBox.Size = new System.Drawing.Size(293, 20);
             this.quoteBox.TabIndex = 1;
@@ -88,7 +88,7 @@
             // repeatTrackBar
             // 
             this.repeatTrackBar.Location = new System.Drawing.Point(61, 72);
-            this.repeatTrackBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.repeatTrackBar.Margin = new System.Windows.Forms.Padding(2);
             this.repeatTrackBar.Name = "repeatTrackBar";
             this.repeatTrackBar.Size = new System.Drawing.Size(336, 45);
             this.repeatTrackBar.TabIndex = 3;
@@ -96,7 +96,7 @@
             // appendButton
             // 
             this.appendButton.Location = new System.Drawing.Point(352, 10);
-            this.appendButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.appendButton.Margin = new System.Windows.Forms.Padding(2);
             this.appendButton.Name = "appendButton";
             this.appendButton.Size = new System.Drawing.Size(56, 57);
             this.appendButton.TabIndex = 4;
@@ -107,7 +107,7 @@
             // loadButton
             // 
             this.loadButton.Location = new System.Drawing.Point(15, 309);
-            this.loadButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.loadButton.Margin = new System.Windows.Forms.Padding(2);
             this.loadButton.Name = "loadButton";
             this.loadButton.Size = new System.Drawing.Size(56, 58);
             this.loadButton.TabIndex = 5;
@@ -228,7 +228,7 @@
             // jsonWriteButton
             // 
             this.jsonWriteButton.Location = new System.Drawing.Point(258, 196);
-            this.jsonWriteButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.jsonWriteButton.Margin = new System.Windows.Forms.Padding(2);
             this.jsonWriteButton.Name = "jsonWriteButton";
             this.jsonWriteButton.Size = new System.Drawing.Size(56, 57);
             this.jsonWriteButton.TabIndex = 20;
@@ -239,7 +239,7 @@
             // jsonLoadButton
             // 
             this.jsonLoadButton.Location = new System.Drawing.Point(77, 309);
-            this.jsonLoadButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.jsonLoadButton.Margin = new System.Windows.Forms.Padding(2);
             this.jsonLoadButton.Name = "jsonLoadButton";
             this.jsonLoadButton.Size = new System.Drawing.Size(56, 58);
             this.jsonLoadButton.TabIndex = 21;
@@ -336,9 +336,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.quoteBox);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Stream Application";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.repeatTrackBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
